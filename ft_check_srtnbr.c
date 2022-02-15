@@ -6,23 +6,48 @@
 /*   By: orekabe <orekabe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 03:37:49 by orekabe           #+#    #+#             */
-/*   Updated: 2022/02/14 23:14:39 by orekabe          ###   ########.fr       */
+/*   Updated: 2022/02/15 02:25:03 by orekabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_check_srtnbr(char **argv)
+static void	ft_check(char **argv)
 {
-	int i;
+	int	i;
 	int	j;
-	int	boool;
-	
-	i = 1;
-	boool = 1;
+
+	i = 0;
 	while (argv[i])
 	{
 		j = 0;
+		while (argv[i][j])
+		{
+			if (!ft_isdigit(argv[i][j]) && argv[i][j] != (' '))
+				ft_print_error();
+			if (ft_isdigit(argv[i][j])
+				&& ((argv[i][j + 1]) == '-' || argv[i][j + 1] == '+'))
+				ft_print_error();
+			if (!ft_isdigit(argv[i][j + 1])
+				&& ((argv[i][j]) == '-' || argv[i][j] == '+'))
+				ft_print_error();
+			j++;
+		}
+		i++;
+	}
+}
+
+int	ft_check_srtnbr(char **argv)
+{
+	int	i;
+	int	j;
+	int	boool;
+
+	i = 1;
+	while (argv[i])
+	{
+		j = 0;
+		boool = 1;
 		if (argv[i][j] == '\0')
 			ft_print_error();
 		while (argv[i][j])
@@ -33,18 +58,7 @@ int	ft_check_srtnbr(char **argv)
 		}
 		if (boool)
 			ft_print_error();
-		j = 0;
-		while (argv[i][j])
-		{
-			if (!ft_isdigit(argv[i][j]) && argv[i][j] != (' '))
-				ft_print_error();
-			if (ft_isdigit(argv[i][j]) && ((argv[i][j + 1]) == '-' || argv[i][j + 1] == '+'))
-				ft_print_error();
-			if (!ft_isdigit(argv[i][j + 1]) && ((argv[i][j]) == '-' || argv[i][j] == '+'))
-				ft_print_error();
-			
-			j++;
-		}
+		ft_check(argv);
 		i++;
 	}
 	return (0);

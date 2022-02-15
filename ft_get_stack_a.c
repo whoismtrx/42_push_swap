@@ -6,7 +6,7 @@
 /*   By: orekabe <orekabe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 00:50:34 by orekabe           #+#    #+#             */
-/*   Updated: 2022/02/14 22:25:49 by orekabe          ###   ########.fr       */
+/*   Updated: 2022/02/15 02:26:46 by orekabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ long	*ft_get_stack_a(t_stack stack, char **argv)
 		j = 0;
 		while (argv[i][j])
 		{
-			if ((ft_isdigit(argv[i][j])) && !(ft_isdigit(argv[i][j - 1]))) 
+			if ((ft_isdigit(argv[i][j])) && !(ft_isdigit(argv[i][j - 1])))
 			{
 				if ((argv[i][j] == '-' || argv[i][j] == '+')
 					&& (argv[i][j + 1] == '-' || argv[i][j + 1] == '+'))

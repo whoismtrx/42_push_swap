@@ -6,7 +6,7 @@
 /*   By: orekabe <orekabe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 18:46:22 by orekabe           #+#    #+#             */
-/*   Updated: 2022/02/14 00:04:52 by orekabe          ###   ########.fr       */
+/*   Updated: 2022/02/15 02:27:30 by orekabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	ft_rev_stack(char *str)
 {
-	int i;
-	int j;
-	
+	int	i;
+	int	j;
+
 	i = ft_strlen(str);
 	while (i >= 0)
 	{

@@ -1,33 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_check_duplicate.c                               :+:      :+:    :+:   */
+/*   ft_create_stacks.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: orekabe <orekabe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/14 15:41:26 by orekabe           #+#    #+#             */
-/*   Updated: 2022/02/14 23:30:31 by orekabe          ###   ########.fr       */
+/*   Created: 2022/02/15 01:03:40 by orekabe           #+#    #+#             */
+/*   Updated: 2022/02/15 02:25:15 by orekabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_check_duplicate(t_stack stack)
+t_stack	ft_create_stacks(t_stack stack, char **argv)
 {
-	int		i;
-	int		j;
+	int	len;
 
-	i = 0;
-	while (i < stack.last)
-	{
-		j = i + 1;
-		while (j <= stack.last)
-		{
-			if (stack.a[i] == stack.a[j])
-				ft_print_error();
-			j++;
-		}
-		i++;
-	}
-	return (0);
+	len = ft_get_len_tab(argv);
+	stack = ft_instialise_stack(stack, len);
+	stack.a = ft_get_stack_a(stack, argv);
+	ft_check_error(stack, argv);
+	return (stack);
 }

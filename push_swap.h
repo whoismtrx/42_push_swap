@@ -6,7 +6,7 @@
 /*   By: orekabe <orekabe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 16:32:12 by orekabe           #+#    #+#             */
-/*   Updated: 2022/02/14 20:18:27 by orekabe          ###   ########.fr       */
+/*   Updated: 2022/02/15 01:19:07 by orekabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void	ft_print_error(void);
 void	ft_rev_stack(char *str);
 int		ft_get_len_tab(char **argv);
 long	*ft_get_stack_a(t_stack stack, char **argv);
+t_stack	ft_create_stacks(t_stack stack, char **argv);
 t_stack	ft_instialise_stack(t_stack stack, int len);
 int		ft_check_srtnbr(char **argv);
 int		ft_check_limits(t_stack stack);
