@@ -6,7 +6,7 @@
 /*   By: orekabe <orekabe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 16:32:12 by orekabe           #+#    #+#             */
-/*   Updated: 2022/02/15 01:19:07 by orekabe          ###   ########.fr       */
+/*   Updated: 2022/02/15 19:15:32 by orekabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,20 @@ typedef struct s_stack
 {
 	long	*a;
 	long	*b;
-	int		head;
-	int		last;
+	int		head_a;
+	int		last_a;
+	int		head_b;
+	int		last_b;
+	long	temp_a;
+	long	temp_b;
+	int		len;
 }				t_stack;
 
 long	ft_atoi(char *str);
 int		ft_isdigit(int c);
 int		ft_strlen(char *s);
+void	*ft_memmove(void *dst, const void *src, int len);
+void	*ft_memcpy(void *dst, const void *src, int n);
 void	ft_print_error(void);
 void	ft_rev_stack(char *str);
 int		ft_get_len_tab(char **argv);
@@ -40,5 +47,10 @@ int		ft_check_srtnbr(char **argv);
 int		ft_check_limits(t_stack stack);
 int		ft_check_duplicate(t_stack stack);
 void	ft_check_error(t_stack stack, char **argv);
+t_stack	ft_swap_a(t_stack stack);
+t_stack	ft_swap_b(t_stack stack);
+t_stack	ft_swap_s(t_stack stack);
+t_stack	ft_push_a(t_stack stack);
+t_stack	ft_push_b(t_stack stack);
 
 #endif

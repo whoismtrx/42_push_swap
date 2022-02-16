@@ -1,33 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_check_duplicate.c                               :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: orekabe <orekabe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/14 15:41:26 by orekabe           #+#    #+#             */
-/*   Updated: 2022/02/15 05:30:52 by orekabe          ###   ########.fr       */
+/*   Created: 2021/11/07 21:15:39 by orekabe           #+#    #+#             */
+/*   Updated: 2022/02/16 05:29:41 by orekabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_check_duplicate(t_stack stack)
+void	*ft_memmove(void *dst, const void *src, int len)
 {
-	int		i;
-	int		j;
+	long	*ptr1;
+	long	*ptr2;
 
-	i = 0;
-	while (i < stack.last_a)
-	{
-		j = i + 1;
-		while (j <= stack.last_a)
-		{
-			if (stack.a[i] == stack.a[j])
-				ft_print_error();
-			j++;
-		}
-		i++;
-	}
-	return (0);
+	if (!dst && !src)
+		return (0);
+	ptr1 = (long *)dst;
+	ptr2 = (long *)src;
+	if (src > dst)
+		ft_memcpy(dst, src, len);
+	else
+		while (len--)
+			ptr1[len] = ptr2[len];
+	return (ptr1);
 }

@@ -1,33 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_check_duplicate.c                               :+:      :+:    :+:   */
+/*   ft_swap_b.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: orekabe <orekabe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/14 15:41:26 by orekabe           #+#    #+#             */
-/*   Updated: 2022/02/15 05:30:52 by orekabe          ###   ########.fr       */
+/*   Created: 2022/02/15 05:12:50 by orekabe           #+#    #+#             */
+/*   Updated: 2022/02/17 00:46:04 by orekabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_check_duplicate(t_stack stack)
+t_stack	ft_swap_b(t_stack stack)
 {
-	int		i;
-	int		j;
-
-	i = 0;
-	while (i < stack.last_a)
-	{
-		j = i + 1;
-		while (j <= stack.last_a)
-		{
-			if (stack.a[i] == stack.a[j])
-				ft_print_error();
-			j++;
-		}
-		i++;
-	}
-	return (0);
+	stack.temp_b = stack.b[stack.head_b];
+	stack.b[stack.head_b] = stack.b[stack.head_b + 1];
+	stack.b[stack.head_b + 1] = stack.temp_b;
+	return (stack);
 }
