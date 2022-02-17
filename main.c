@@ -6,7 +6,7 @@
 /*   By: orekabe <orekabe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 23:00:36 by orekabe           #+#    #+#             */
-/*   Updated: 2022/02/17 00:50:24 by orekabe          ###   ########.fr       */
+/*   Updated: 2022/02/17 04:54:18 by orekabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,21 +40,11 @@ int	main(int argc, char **argv)
 	ft_print_stack_a(stack);
 	ft_print_stack_b(stack);
 	stack = ft_push_b(stack);
-	ft_print_stack_a(stack);
-	ft_print_stack_b(stack);
+	stack = ft_push_b(stack);
 	stack = ft_push_b(stack);
 	ft_print_stack_a(stack);
 	ft_print_stack_b(stack);
-	stack = ft_push_b(stack);
-	ft_print_stack_a(stack);
-	ft_print_stack_b(stack);
-	stack = ft_swap_a(stack);
-	ft_print_stack_a(stack);
-	ft_print_stack_b(stack);
-	stack = ft_swap_b(stack);
-	ft_print_stack_a(stack);
-	ft_print_stack_b(stack);
-	stack = ft_push_a(stack);
+	stack = ft_rev_rot_r(stack);
 	ft_print_stack_a(stack);
 	ft_print_stack_b(stack);
 }

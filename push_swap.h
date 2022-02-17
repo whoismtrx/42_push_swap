@@ -6,7 +6,7 @@
 /*   By: orekabe <orekabe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 16:32:12 by orekabe           #+#    #+#             */
-/*   Updated: 2022/02/15 19:15:32 by orekabe          ###   ########.fr       */
+/*   Updated: 2022/02/17 04:58:52 by orekabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,5 +52,11 @@ t_stack	ft_swap_b(t_stack stack);
 t_stack	ft_swap_s(t_stack stack);
 t_stack	ft_push_a(t_stack stack);
 t_stack	ft_push_b(t_stack stack);
+t_stack	ft_rotate_a(t_stack stack);
+t_stack	ft_rotate_b(t_stack stack);
+t_stack	ft_rotate_r(t_stack stack);
+t_stack	ft_rev_rot_a(t_stack stack);
+t_stack	ft_rev_rot_b(t_stack stack);
+t_stack	ft_rev_rot_r(t_stack stack);
 
 #endif

@@ -1,20 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_swap_s.c                                        :+:      :+:    :+:   */
+/*   ft_rotate_a.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: orekabe <orekabe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/15 05:33:15 by orekabe           #+#    #+#             */
-/*   Updated: 2022/02/17 03:59:23 by orekabe          ###   ########.fr       */
+/*   Created: 2022/02/17 02:22:36 by orekabe           #+#    #+#             */
+/*   Updated: 2022/02/17 04:56:50 by orekabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_stack	ft_swap_s(t_stack stack)
+t_stack	ft_rotate_a(t_stack stack)
 {
-	stack = ft_swap_a(stack);
-	stack = ft_swap_b(stack);
+	stack.temp_a = stack.a[stack.head_a];
+	ft_memmove(stack.a, stack.a + 1, stack.last_a);
+	stack.a[stack.last_a] = stack.temp_a;
 	return (stack);
 }
