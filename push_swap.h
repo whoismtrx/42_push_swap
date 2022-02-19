@@ -6,7 +6,7 @@
 /*   By: orekabe <orekabe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 16:32:12 by orekabe           #+#    #+#             */
-/*   Updated: 2022/02/17 04:58:52 by orekabe          ###   ########.fr       */
+/*   Updated: 2022/02/19 03:00:21 by orekabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,5 +58,10 @@ t_stack	ft_rotate_r(t_stack stack);
 t_stack	ft_rev_rot_a(t_stack stack);
 t_stack	ft_rev_rot_b(t_stack stack);
 t_stack	ft_rev_rot_r(t_stack stack);
+t_stack	ft_algo_swap(t_stack stack);
+int		ft_check_if_not_sorted(t_stack stack);
 
+
+void	ft_print_stack_a(t_stack stack);
+void	ft_print_stack_b(t_stack stack);
 #endif

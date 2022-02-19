@@ -1,25 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_print_stack_b.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: orekabe <orekabe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/11 23:00:36 by orekabe           #+#    #+#             */
-/*   Updated: 2022/02/19 21:03:32 by orekabe          ###   ########.fr       */
+/*   Created: 2022/02/19 02:59:38 by orekabe           #+#    #+#             */
+/*   Updated: 2022/02/19 03:00:13 by orekabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main(int argc, char **argv)
+void	ft_print_stack_b(t_stack stack)
 {
-	t_stack	stack;
-	int	i;
+	int	n;
 
-	i = 0;
-	stack = ft_create_stacks(stack, argv);
-	ft_print_stack_a(stack);
-	ft_print_stack_b(stack);
-	stack = ft_algo_swap(stack);
+	printf("||| B |||\n");
+	n = stack.head_b;
+	while (n <= stack.last_b)
+		printf(" b%d = %ld\n", stack.head_b++ - 1, stack.b[n++]);
 }

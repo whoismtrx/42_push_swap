@@ -1,25 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_check_if_sorted.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: orekabe <orekabe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/11 23:00:36 by orekabe           #+#    #+#             */
-/*   Updated: 2022/02/19 21:03:32 by orekabe          ###   ########.fr       */
+/*   Created: 2022/02/18 23:53:46 by orekabe           #+#    #+#             */
+/*   Updated: 2022/02/18 23:57:33 by orekabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main(int argc, char **argv)
+int	ft_check_if_not_sorted(t_stack stack)
 {
-	t_stack	stack;
 	int	i;
-
+	
 	i = 0;
-	stack = ft_create_stacks(stack, argv);
-	ft_print_stack_a(stack);
-	ft_print_stack_b(stack);
-	stack = ft_algo_swap(stack);
+	while (i < stack.last_a)
+	{
+		if (stack.a[i] > stack.a[i + 1])
+			return (1);
+		i++;
+	}
+	return (0);
 }
