@@ -6,7 +6,7 @@
 /*   By: orekabe <orekabe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 05:33:15 by orekabe           #+#    #+#             */
-/*   Updated: 2022/02/17 03:59:23 by orekabe          ###   ########.fr       */
+/*   Updated: 2022/02/22 04:17:24 by orekabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,5 +16,6 @@ t_stack	ft_swap_s(t_stack stack)
 {
 	stack = ft_swap_a(stack);
 	stack = ft_swap_b(stack);
+	write(1, "ss\n", 3);
 	return (stack);
 }
