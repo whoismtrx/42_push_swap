@@ -6,7 +6,7 @@
 /*   By: orekabe <orekabe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 16:29:24 by orekabe           #+#    #+#             */
-/*   Updated: 2022/02/16 20:07:48 by orekabe          ###   ########.fr       */
+/*   Updated: 2022/02/28 03:05:54 by orekabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,6 @@ t_stack	ft_instialise_stack(t_stack stack, int len)
 	stack.last_b = len - 1;
 	stack.a = (long *)malloc(sizeof(long) * len);
 	stack.b = (long *)malloc(sizeof(long) * len);
+	stack.sorted_tab = (long *)malloc(sizeof(long) * len);
 	return (stack);
 }

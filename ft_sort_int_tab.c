@@ -1,34 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_sort_int_tab.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: orekabe <orekabe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/11 23:00:36 by orekabe           #+#    #+#             */
-/*   Updated: 2022/02/28 17:19:11 by orekabe          ###   ########.fr       */
+/*   Created: 2022/02/28 03:11:09 by orekabe           #+#    #+#             */
+/*   Updated: 2022/02/28 03:55:23 by orekabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main(int argc, char **argv)
+long	*ft_sort_tab(t_stack stack, int len)
 {
-	t_stack	stack;
-	int	i;
+	long	first;
+	long	second;
+	long	temp;
 
-	i = 0;
-	stack = ft_create_stacks(stack, argv);
-	// ft_print_stack_a(stack);
-	// ft_print_stack_b(stack);
-	// stack = ft_algo_swap(stack);
-	// ft_print_stack_a(stack);
-	// ft_print_stack_b(stack);
-	// ft_rev_stack("71 14 309 45 104 52 86 107 804 61 34 42 55 21 41 23 87 12 33 0");
-	while (i < stack.len)
+	first = 0;
+	while (first <= len - 1)
 	{
-		printf("%ld\n", stack.sorted_tab[i]);
-		i++;
+		second = first + 1;
+		while (second <= len - 1)
+		{
+			if (stack.sorted_tab[first] > stack.sorted_tab[second])
+			{
+				temp = stack.sorted_tab[first];
+				stack.sorted_tab[first] = stack.sorted_tab[second];
+				stack.sorted_tab[second] = temp;
+			}
+			second++;
+		}
+		first++;
 	}
-	
+	return (stack.sorted_tab);
 }

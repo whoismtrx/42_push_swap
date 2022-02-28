@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_create_stacks.c                                 :+:      :+:    :+:   */
+/*   ft_stacpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: orekabe <orekabe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/15 01:03:40 by orekabe           #+#    #+#             */
-/*   Updated: 2022/02/28 16:14:44 by orekabe          ###   ########.fr       */
+/*   Created: 2022/02/28 16:11:03 by orekabe           #+#    #+#             */
+/*   Updated: 2022/02/28 16:13:26 by orekabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_stack	ft_create_stacks(t_stack stack, char **argv)
+long	*ft_stacpy(t_stack stack)
 {
-	int	len;
+	int	i;
 
-	stack.len = ft_get_len_tab(argv);
-	stack = ft_instialise_stack(stack, stack.len);
-	stack.a = ft_get_stack_a(stack, argv);
-	stack.sorted_tab = ft_stacpy(stack);
-	stack.sorted_tab = ft_sort_tab(stack, stack.len);
-	ft_check_error(stack, argv);
-	return (stack);
+	i = 0;
+	while (i < stack.len)
+	{
+		stack.sorted_tab[i] = stack.a[i];
+		i++;
+	}
+	return (stack.sorted_tab);
 }

@@ -6,7 +6,7 @@
 /*   By: orekabe <orekabe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 16:32:12 by orekabe           #+#    #+#             */
-/*   Updated: 2022/02/19 03:00:21 by orekabe          ###   ########.fr       */
+/*   Updated: 2022/02/28 16:13:41 by orekabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ typedef struct s_stack
 {
 	long	*a;
 	long	*b;
+	long	*sorted_tab;
 	int		head_a;
 	int		last_a;
 	int		head_b;
@@ -41,6 +42,8 @@ void	ft_print_error(void);
 void	ft_rev_stack(char *str);
 int		ft_get_len_tab(char **argv);
 long	*ft_get_stack_a(t_stack stack, char **argv);
+long	*ft_sort_tab(t_stack stack, int len);
+long	*ft_stacpy(t_stack stack);
 t_stack	ft_create_stacks(t_stack stack, char **argv);
 t_stack	ft_instialise_stack(t_stack stack, int len);
 int		ft_check_srtnbr(char **argv);
