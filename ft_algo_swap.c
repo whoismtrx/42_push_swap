@@ -6,7 +6,7 @@
 /*   By: orekabe <orekabe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 23:36:19 by orekabe           #+#    #+#             */
-/*   Updated: 2022/03/01 16:11:59 by orekabe          ###   ########.fr       */
+/*   Updated: 2022/03/02 02:58:01 by orekabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -300,11 +300,12 @@ t_stack	ft_algo_swap(t_stack stack)
 	{
 		pos = ft_get_max(stack);
 		max = stack.b[pos];
+		mid = ((stack.len - stack.head_b) / 2) + stack.head_b;
 		while (stack.b[stack.head_b] != max)
 		{
-			if (pos > (stack.len - stack.head_b) / 2)
+			if (pos > mid)
 				stack = ft_rev_rot_b(stack);
-			else
+			else if (pos <= mid)
 				stack = ft_rotate_b(stack);
 		}
 		if (stack.a[stack.head_a] > stack.a[stack.head_a + 1])
