@@ -6,7 +6,7 @@
 /*   By: orekabe <orekabe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 23:36:19 by orekabe           #+#    #+#             */
-/*   Updated: 2022/03/02 02:58:01 by orekabe          ###   ########.fr       */
+/*   Updated: 2022/03/03 20:22:41 by orekabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,27 @@ int		ft_get_max(t_stack stack)
 	while (i < stack.len)
 	{
 		if (stack.b[pos] < stack.b[j] && j < stack.len)
+		{
+			pos = j;
+		}
+		j++;
+		i++;
+	}
+	return (pos);
+}
+
+int		ft_get_min(t_stack stack)
+{
+	int	i;
+	int	j;
+	int	pos;
+
+	i = 0;
+	pos = stack.head_b;
+	j = stack.head_b + 1;
+	while (i < stack.len)
+	{
+		if (stack.b[pos] > stack.b[j] && j < stack.len)
 		{
 			pos = j;
 		}
@@ -277,11 +298,12 @@ t_stack	ft_algo_swap(t_stack stack)
 	long	mid;
 	long	max;
 	int		pos = 0;
+	int		i = 0;
 	while (ft_check_if_not_sorted(stack))
 	{
 		stack.sorted_tab = ft_stacpy(stack);
 		stack.sorted_tab = ft_sort_tab(stack, stack.last_a + 1);
-		pos = (stack.last_a / 2) + 1;
+		pos = (stack.last_a / 3) + 1;
 		mid = stack.sorted_tab[pos];
 		while (stack.last_a >= pos && ft_check_if_not_sorted(stack))
 		{
@@ -292,8 +314,7 @@ t_stack	ft_algo_swap(t_stack stack)
 			else
 				stack = ft_rotate_a(stack);
 		}
-		// break;
-		if (stack.last_a == 2)
+		if (stack.last_a == 0)
 			break;
 	}
 	while (ft_check_if_not_sorted(stack) || stack.head_b < stack.len)
