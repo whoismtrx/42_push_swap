@@ -6,7 +6,7 @@
 /*   By: orekabe <orekabe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 23:36:19 by orekabe           #+#    #+#             */
-/*   Updated: 2022/03/04 04:55:34 by orekabe          ###   ########.fr       */
+/*   Updated: 2022/03/04 18:28:50 by orekabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ t_stack	ft_algo_swap(t_stack stack)
 			else
 				stack = ft_rotate_a(stack);
 		}
-		boool = 0;
+		// boool = 0;
 		if (stack.last_a == 0)
 			break;
 	}
