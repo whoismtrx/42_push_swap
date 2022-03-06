@@ -6,7 +6,7 @@
 /*   By: orekabe <orekabe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 23:36:19 by orekabe           #+#    #+#             */
-/*   Updated: 2022/03/06 04:56:30 by orekabe          ###   ########.fr       */
+/*   Updated: 2022/03/07 00:46:45 by orekabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,16 +67,6 @@ int		ft_get_min(t_stack stack)
 	}
 	return (pos);
 }
-
-// int	ft_check_first_half(t_stack stack)
-// {
-// 	int	i = 0;
-// 	while (i < (stack.len / 2))
-// 	{
-// 		if
-// 	}
-	
-// }
 
 t_stack	ft_algo_swap(t_stack stack)
 {	
