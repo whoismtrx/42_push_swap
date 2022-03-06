@@ -6,7 +6,7 @@
 /*   By: orekabe <orekabe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 23:36:19 by orekabe           #+#    #+#             */
-/*   Updated: 2022/03/04 18:28:50 by orekabe          ###   ########.fr       */
+/*   Updated: 2022/03/06 04:56:30 by orekabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,19 +83,19 @@ t_stack	ft_algo_swap(t_stack stack)
 	long	mid;
 	long	max;
 	long	midl;
+	long	lmid = stack.sorted_tab[0];
 	int		pos = 0;
 	int		i = 0;
-	int		boool = 1;
-	while (ft_check_if_not_sorted(stack))
+	while (stack.last_a >= 0)
 	{
 		stack.sorted_tab = ft_stacpy(stack);
 		stack.sorted_tab = ft_sort_tab(stack, stack.last_a + 1);
-		pos = (stack.last_a / 3) + 1;
+		pos = (stack.last_a / 5) + 1;
 		mid = stack.sorted_tab[pos];
 		midl = stack.sorted_tab[pos / 2];
-		while (stack.last_a >= pos && ft_check_if_not_sorted(stack))
+		while (stack.last_a >= pos)
 		{
-			if (stack.b[stack.head_b] < midl && stack.head_b < stack.last_b - 1 && boool)
+			if (stack.b[stack.head_b] < midl && stack.b[stack.head_b] >= lmid && stack.head_b < stack.last_b - 1)
 				stack = ft_rotate_b(stack);
 			if (stack.a[stack.head_a] < mid)
 				stack = ft_push_b(stack);
@@ -104,9 +104,9 @@ t_stack	ft_algo_swap(t_stack stack)
 			else
 				stack = ft_rotate_a(stack);
 		}
-		// boool = 0;
 		if (stack.last_a == 0)
 			break;
+		lmid = mid;
 	}
 	while (ft_check_if_not_sorted(stack) || stack.head_b < stack.len)
 	{
