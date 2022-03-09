@@ -6,7 +6,7 @@
 /*   By: orekabe <orekabe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 23:36:19 by orekabe           #+#    #+#             */
-/*   Updated: 2022/03/08 05:53:47 by orekabe          ###   ########.fr       */
+/*   Updated: 2022/03/10 00:09:24 by orekabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,14 +81,14 @@ int	ft_ra_or_rra(t_stack stack, long mid)
 		i++;
 	}
 	i = (stack.last_a / 2) + 1;
-	while (i < stack.len)
+	while (i <= stack.last_a)
 	{
 		if (stack.a[i] < mid)
 			down++;
 		i++;
 	}
 	printf("|%d| == |%d|", up, down);
-	if (up > down)
+	if (down > up)
 		return (1);
 	return (0);
 }
@@ -100,8 +100,7 @@ t_stack	ft_algo_swap(t_stack stack)
 	long	midl;
 	long	lmid = stack.sorted_tab[0];
 	int		pos = 0;
-	int		i = 8;
-	int		wid;
+	int		i = 7;
 	while (stack.last_a >= 0)
 	{
 		stack.sorted_tab = ft_stacpy(stack);
@@ -122,14 +121,14 @@ t_stack	ft_algo_swap(t_stack stack)
 			else
 				stack = ft_rotate_a(stack, 1);
 		}
-		if (stack.last_a <= 100)
+		if (stack.last_a <= 110)
 			i = 3;
-		else if (stack.last_a <= 200)
+		else if (stack.last_a <= 190)
 			i = 4;
 		else if (stack.last_a <= 300)
 			i = 5;
-		else if (stack.last_a <= 400)
-			i = 7;
+		else if (stack.last_a <= 430)
+			i = 6;
 		if (stack.last_a == 0)
 			break;
 		lmid = mid;
@@ -152,7 +151,6 @@ t_stack	ft_algo_swap(t_stack stack)
 			stack = ft_push_a(stack);
 		else if (stack.a[stack.head_a] < stack.b[stack.head_b])
 			stack = ft_push_a(stack);
-		else break;
 	}
 	return (stack);
 }
