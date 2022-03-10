@@ -6,7 +6,7 @@
 /*   By: orekabe <orekabe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 16:32:12 by orekabe           #+#    #+#             */
-/*   Updated: 2022/03/08 03:50:39 by orekabe          ###   ########.fr       */
+/*   Updated: 2022/03/10 05:45:42 by orekabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,18 +50,18 @@ int		ft_check_srtnbr(char **argv);
 int		ft_check_limits(t_stack stack);
 int		ft_check_duplicate(t_stack stack);
 void	ft_check_error(t_stack stack, char **argv);
-t_stack	ft_swap_a(t_stack stack);
-t_stack	ft_swap_b(t_stack stack);
-t_stack	ft_swap_s(t_stack stack);
-t_stack	ft_push_a(t_stack stack);
-t_stack	ft_push_b(t_stack stack);
+t_stack	ft_swap_a(t_stack stack, int boool);
+t_stack	ft_swap_b(t_stack stack, int boool);
+t_stack	ft_swap_s(t_stack stack, int boool);
+t_stack	ft_push_a(t_stack stack, int boool);
+t_stack	ft_push_b(t_stack stack, int boool);
 t_stack	ft_rotate_a(t_stack stack, int boool);
 t_stack	ft_rotate_b(t_stack stack, int boool);
 t_stack	ft_rotate_r(t_stack stack, int boool);
-t_stack	ft_rev_rot_a(t_stack stack);
-t_stack	ft_rev_rot_b(t_stack stack);
-t_stack	ft_rev_rot_r(t_stack stack);
-t_stack	ft_algo_swap(t_stack stack);
+t_stack	ft_rev_rot_a(t_stack stack, int boool);
+t_stack	ft_rev_rot_b(t_stack stack, int boool);
+t_stack	ft_rev_rot_r(t_stack stack, int boool);
+t_stack	ft_algo_swap(t_stack stack, t_stack stack2, t_stack stack3, t_stack stack4);
 int		ft_check_if_not_sorted(t_stack stack);
 
 
