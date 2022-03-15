@@ -6,7 +6,7 @@
 /*   By: orekabe <orekabe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/19 02:58:55 by orekabe           #+#    #+#             */
-/*   Updated: 2022/02/24 23:56:39 by orekabe          ###   ########.fr       */
+/*   Updated: 2022/03/10 17:50:25 by orekabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ void	ft_print_stack_a(t_stack stack)
 	int	i;
 
 	i = -1;
-	int d;
 	printf("||| A |||\n");
 	while (++i <= stack.last_a)
 		printf(" a%d = %ld\n", i, stack.a[i]);

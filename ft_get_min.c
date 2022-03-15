@@ -1,26 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_instialise_stack.c                              :+:      :+:    :+:   */
+/*   ft_get_min.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: orekabe <orekabe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/11 16:29:24 by orekabe           #+#    #+#             */
-/*   Updated: 2022/03/11 04:31:05 by orekabe          ###   ########.fr       */
+/*   Created: 2022/03/12 00:47:25 by orekabe           #+#    #+#             */
+/*   Updated: 2022/03/15 18:02:56 by orekabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_stack	ft_instialise_stack(t_stack stack, int len)
+int	ft_get_min(t_stack stack)
 {
-	stack.count = 0;
-	stack.head_a = 0;
-	stack.head_b = len;
-	stack.last_a = len - 1;
-	stack.last_b = len - 1;
-	stack.a = (long *)malloc(sizeof(long) * len);
-	stack.b = (long *)malloc(sizeof(long) * len);
-	stack.sorted_tab = (long *)malloc(sizeof(long) * len);
-	return (stack);
+	int	i;
+	int	j;
+	int	pos;
+
+	i = 0;
+	pos = stack.head_a;
+	j = stack.head_a + 1;
+	while (i < stack.len)
+	{
+		if (stack.a[pos] < stack.a[j] && j < stack.len)
+		{
+			pos = j;
+		}
+		j++;
+		i++;
+	}
+	return (pos);
 }

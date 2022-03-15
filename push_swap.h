@@ -6,7 +6,7 @@
 /*   By: orekabe <orekabe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 16:32:12 by orekabe           #+#    #+#             */
-/*   Updated: 2022/03/10 05:45:42 by orekabe          ###   ########.fr       */
+/*   Updated: 2022/03/12 00:50:00 by orekabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,12 @@ typedef struct s_stack
 	long	temp_a;
 	long	temp_b;
 	int		len;
+	long	pivot;
+	long	p_pivot;
+	long	max;
+	long	mid;
+	int		pos;
+	int		count;
 }				t_stack;
 
 long	ft_atoi(char *str);
@@ -61,10 +67,20 @@ t_stack	ft_rotate_r(t_stack stack, int boool);
 t_stack	ft_rev_rot_a(t_stack stack, int boool);
 t_stack	ft_rev_rot_b(t_stack stack, int boool);
 t_stack	ft_rev_rot_r(t_stack stack, int boool);
-t_stack	ft_algo_swap(t_stack stack, t_stack stack2, t_stack stack3, t_stack stack4);
+t_stack	ft_algo_swap(t_stack stack, t_stack stack2,
+			t_stack stack3, t_stack stack4);
 int		ft_check_if_not_sorted(t_stack stack);
+int		ft_check_less_than_pivot(t_stack stack, long mid);
+int		ft_get_max(t_stack stack);
+int		ft_get_min(t_stack stack);
+int		ft_get_div(t_stack stack2, t_stack stack3, t_stack stack4);
+t_stack	ft_a_to_b(t_stack stack, int div, int boool);
+t_stack	ft_b_to_a(t_stack stack, int boool);
+t_stack	ft_pick_inst(t_stack stack, int boool);
+int		ft_pick_div(t_stack stack);
+t_stack	ft_pick_inst_test(t_stack stack, int boool);
+t_stack	ft_a_to_b_test(t_stack stack, int div, int boool);
+t_stack	ft_b_to_a_test(t_stack stack, int boool);
+t_stack	ft_algo_5(t_stack stack);
 
-
-void	ft_print_stack_a(t_stack stack);
-void	ft_print_stack_b(t_stack stack);
 #endif

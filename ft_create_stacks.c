@@ -6,7 +6,7 @@
 /*   By: orekabe <orekabe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 01:03:40 by orekabe           #+#    #+#             */
-/*   Updated: 2022/03/04 04:03:46 by orekabe          ###   ########.fr       */
+/*   Updated: 2022/03/11 19:40:13 by orekabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 t_stack	ft_create_stacks(t_stack stack, char **argv)
 {
-	int	len;
-
 	stack.len = ft_get_len_tab(argv);
 	stack = ft_instialise_stack(stack, stack.len);
 	stack.a = ft_get_stack_a(stack, argv);

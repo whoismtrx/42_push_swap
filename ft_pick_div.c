@@ -1,26 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_instialise_stack.c                              :+:      :+:    :+:   */
+/*   ft_pick_div.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: orekabe <orekabe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/11 16:29:24 by orekabe           #+#    #+#             */
-/*   Updated: 2022/03/11 04:31:05 by orekabe          ###   ########.fr       */
+/*   Created: 2022/03/11 01:54:42 by orekabe           #+#    #+#             */
+/*   Updated: 2022/03/15 18:02:31 by orekabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_stack	ft_instialise_stack(t_stack stack, int len)
+int	ft_pick_div(t_stack stack)
 {
-	stack.count = 0;
-	stack.head_a = 0;
-	stack.head_b = len;
-	stack.last_a = len - 1;
-	stack.last_b = len - 1;
-	stack.a = (long *)malloc(sizeof(long) * len);
-	stack.b = (long *)malloc(sizeof(long) * len);
-	stack.sorted_tab = (long *)malloc(sizeof(long) * len);
-	return (stack);
+	int	div;
+
+	div = 0;
+	if (stack.last_a <= 110)
+		div = 3;
+	else if (stack.last_a <= 190)
+		div = 4;
+	else if (stack.last_a <= 300)
+		div = 5;
+	else if (stack.last_a <= 430)
+		div = 6;
+	return (div);
 }
