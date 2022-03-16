@@ -6,18 +6,11 @@
 /*   By: orekabe <orekabe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 23:00:36 by orekabe           #+#    #+#             */
-/*   Updated: 2022/03/15 18:01:24 by orekabe          ###   ########.fr       */
+/*   Updated: 2022/03/16 16:17:25 by orekabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	ft_free_stacks(t_stack stack)
-{
-	free(stack.a);
-	free(stack.b);
-	free(stack.sorted_tab);
-}
 
 int	main(int argc, char **argv)
 {

@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_rev_rot_b.c                                     :+:      :+:    :+:   */
+/*   ft_check_if_sorted.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: orekabe <orekabe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/17 04:42:14 by orekabe           #+#    #+#             */
-/*   Updated: 2022/03/16 15:55:32 by orekabe          ###   ########.fr       */
+/*   Created: 2022/02/18 23:53:46 by orekabe           #+#    #+#             */
+/*   Updated: 2022/03/10 17:47:48 by orekabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_stack	ft_rev_rot_b(t_stack stack, int boool)
+int	ft_check_if_not_sorted(t_stack stack)
 {
-	if (stack.head_b < stack.len)
+	int	i;
+
+	i = 0;
+	while (i < stack.last_a)
 	{
-		stack.temp_b = stack.b[stack.last_b];
-		ft_memmove(stack.b + stack.head_b + 1,
-			stack.b + stack.head_b, stack.last_b - stack.head_b);
-		stack.b[stack.head_b] = stack.temp_b;
-		if (boool)
-			write(1, "rrb\n", 4);
+		if (stack.a[i] > stack.a[i + 1])
+			return (1);
+		i++;
 	}
-	return (stack);
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: orekabe <orekabe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 16:32:12 by orekabe           #+#    #+#             */
-/*   Updated: 2022/03/12 00:50:00 by orekabe          ###   ########.fr       */
+/*   Updated: 2022/03/16 04:14:30 by orekabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,5 +82,11 @@ t_stack	ft_pick_inst_test(t_stack stack, int boool);
 t_stack	ft_a_to_b_test(t_stack stack, int div, int boool);
 t_stack	ft_b_to_a_test(t_stack stack, int boool);
 t_stack	ft_algo_5(t_stack stack);
+char	*ft_strjoin(char *s1, char *s2);
+int		ft_strcmp(char *s1, char *s2);
+char	*ft_strchr(char *s, int c);
+char	*ft_read(char *str, int fd);
+char	*get_next_line(int fd);
+void	ft_free_stacks(t_stack stack);
 
 #endif
