@@ -6,7 +6,7 @@
 /*   By: orekabe <orekabe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 23:36:19 by orekabe           #+#    #+#             */
-/*   Updated: 2022/03/15 18:03:35 by orekabe          ###   ########.fr       */
+/*   Updated: 2022/03/16 16:58:31 by orekabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ t_stack	ft_algo_swap(t_stack stack, t_stack stack2,
 	int	boool;
 
 	boool = 1;
+	div = 0;
 	if (stack.len > 5)
 	{
 		if (stack.len < 300)

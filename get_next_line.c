@@ -6,7 +6,7 @@
 /*   By: orekabe <orekabe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/29 15:00:58 by orekabe           #+#    #+#             */
-/*   Updated: 2022/03/16 04:15:41 by orekabe          ###   ########.fr       */
+/*   Updated: 2022/03/16 19:27:10 by orekabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ char	*get_next_line(int fd)
 	char static	*str;
 	char		*ret;
 
-	str = ft_read(str, 0);
+	str = ft_read(str, fd);
 	if (!str)
 		return (NULL);
 	ret = get_line(str);

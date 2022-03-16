@@ -6,7 +6,7 @@
 /*   By: orekabe <orekabe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 16:32:12 by orekabe           #+#    #+#             */
-/*   Updated: 2022/03/16 04:14:30 by orekabe          ###   ########.fr       */
+/*   Updated: 2022/03/16 18:02:47 by orekabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,8 @@ long	*ft_get_stack_a(t_stack stack, char **argv);
 long	*ft_sort_tab(t_stack stack, int len);
 long	*ft_stacpy(t_stack stack);
 t_stack	ft_create_stacks(t_stack stack, char **argv);
-t_stack	ft_instialise_stack(t_stack stack, int len);
-int		ft_check_srtnbr(char **argv);
+t_stack	ft_initialize_stack(t_stack stack, int len);
+int		ft_check_strnbr(char **argv);
 int		ft_check_limits(t_stack stack);
 int		ft_check_duplicate(t_stack stack);
 void	ft_check_error(t_stack stack, char **argv);
@@ -82,6 +82,7 @@ t_stack	ft_pick_inst_test(t_stack stack, int boool);
 t_stack	ft_a_to_b_test(t_stack stack, int div, int boool);
 t_stack	ft_b_to_a_test(t_stack stack, int boool);
 t_stack	ft_algo_5(t_stack stack);
+void	ft_free_stacks(t_stack stack);
 char	*ft_strjoin(char *s1, char *s2);
 int		ft_strcmp(char *s1, char *s2);
 char	*ft_strchr(char *s, int c);
