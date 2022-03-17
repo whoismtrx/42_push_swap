@@ -6,13 +6,13 @@
 /*   By: orekabe <orekabe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 20:20:03 by orekabe           #+#    #+#             */
-/*   Updated: 2022/03/16 19:35:21 by orekabe          ###   ########.fr       */
+/*   Updated: 2022/03/17 16:11:45 by orekabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_stack	ft_check_inst(t_stack stack, char *str)
+static t_stack	ft_check_inst(t_stack stack, char *str)
 {
 	if (ft_strcmp(str, "pa\n") == 0)
 		stack = ft_push_a(stack, 0);
@@ -36,6 +36,8 @@ t_stack	ft_check_inst(t_stack stack, char *str)
 		stack = ft_swap_b(stack, 0);
 	else if (ft_strcmp(str, "ss\n") == 0)
 		stack = ft_swap_s(stack, 0);
+	else
+		ft_print_error();
 	return (stack);
 }
 
