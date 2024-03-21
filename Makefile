@@ -18,36 +18,62 @@ NAME1 = push_swap
 
 NAME2 = checker
 
-HEADER = push_swap.h
+HEADER = -I./include
 
-SRC = ft_atoi.c ft_a_to_b.c ft_a_to_b_test.c ft_algo_swap.c ft_algo_5.c ft_b_to_a.c ft_b_to_a_test.c ft_check_duplicate.c ft_check_error.c \
-		ft_check_if_not_sorted.c ft_check_less_than_pivot.c ft_check_limits.c ft_check_strnbr.c ft_create_stacks.c ft_get_div.c ft_get_len_tab.c \
-		ft_get_max.c ft_get_min.c ft_get_stack_a.c ft_initialize_stack.c ft_isdigit.c ft_memcpy.c ft_memmove.c ft_pick_div.c ft_pick_inst_test.c \
-		ft_pick_inst.c ft_print_error.c ft_push_a.c ft_push_b.c ft_rev_rot_a.c ft_rev_rot_b.c ft_rev_rot_r.c ft_rotate_a.c ft_rotate_b.c ft_rotate_r.c \
-		ft_sort_int_tab.c ft_stacpy.c ft_swap_a.c ft_swap_b.c ft_swap_s.c ft_free_stacks.c
+SRCD = ./src
 
-BSRC = ft_checker.c ft_strlen.c ft_strcmp.c get_next_line.c get_next_line_utils.c
+OBJD = ./objs
 
-OBJ = $(SRC:.c=.o)
+SRC = $(SRCD)/ft_atoi.c $(SRCD)/ft_a_to_b.c $(SRCD)/ft_a_to_b_test.c $(SRCD)/ft_algo_swap.c $(SRCD)/ft_algo_5.c $(SRCD)/ft_b_to_a.c $(SRCD)/ft_b_to_a_test.c $(SRCD)/ft_check_duplicate.c $(SRCD)/ft_check_error.c \
+		$(SRCD)/ft_check_if_not_sorted.c $(SRCD)/ft_check_less_than_pivot.c $(SRCD)/ft_check_limits.c $(SRCD)/ft_check_strnbr.c $(SRCD)/ft_create_stacks.c $(SRCD)/ft_get_div.c $(SRCD)/ft_get_len_tab.c \
+		$(SRCD)/ft_get_max.c $(SRCD)/ft_get_min.c $(SRCD)/ft_get_stack_a.c $(SRCD)/ft_initialize_stack.c $(SRCD)/ft_isdigit.c $(SRCD)/ft_memcpy.c $(SRCD)/ft_memmove.c $(SRCD)/ft_pick_div.c $(SRCD)/ft_pick_inst_test.c \
+		$(SRCD)/ft_pick_inst.c $(SRCD)/ft_print_error.c $(SRCD)/ft_push_a.c $(SRCD)/ft_push_b.c $(SRCD)/ft_rev_rot_a.c $(SRCD)/ft_rev_rot_b.c $(SRCD)/ft_rev_rot_r.c $(SRCD)/ft_rotate_a.c $(SRCD)/ft_rotate_b.c $(SRCD)/ft_rotate_r.c \
+		$(SRCD)/ft_sort_int_tab.c $(SRCD)/ft_stacpy.c $(SRCD)/ft_swap_a.c $(SRCD)/ft_swap_b.c $(SRCD)/ft_swap_s.c $(SRCD)/ft_free_stacks.c $(SRCD)/ft_strlen.c $(SRCD)/ft_strcmp.c $(SRCD)/get_next_line.c $(SRCD)/get_next_line_utils.c \
 
-BOBJ = $(BSRC:.c=.o)
+SRCM = $(SRCD)/push_swap.c
+
+SRCB = $(SRCD)/ft_checker.c
+
+OBJ = $(addprefix $(OBJD)/, $(notdir $(SRC:.c=.o)))
+
+OBJM = $(addprefix $(OBJD)/, $(notdir $(SRCM:.c=.o)))
+
+OBJB = $(addprefix $(OBJD)/, $(notdir $(SRCB:.c=.o)))
 
 all: $(NAME1)
 
-$(NAME1): $(OBJ)
+$(NAME1): $(OBJ) $(OBJM)
+	@echo "██████╗ ██╗   ██╗███████╗██╗  ██╗        ███████╗██╗    ██╗ █████╗ ██████╗ "
+	@echo "██╔══██╗██║   ██║██╔════╝██║  ██║        ██╔════╝██║    ██║██╔══██╗██╔══██╗"
+	@echo "██████╔╝██║   ██║███████╗███████║        ███████╗██║ █╗ ██║███████║██████╔╝"
+	@echo "██╔═══╝ ██║   ██║╚════██║██╔══██║        ╚════██║██║███╗██║██╔══██║██╔═══╝ "
+	@echo "██║     ╚██████╔╝███████║██║  ██║███████╗███████║╚███╔███╔╝██║  ██║██║     "
+	@echo "╚═╝      ╚═════╝ ╚══════╝╚═╝  ╚═╝╚══════╝╚══════╝ ╚══╝╚══╝ ╚═╝  ╚═╝╚═╝     "
+	@echo "                   			BY: MTRX"
+	@$(CC) $(OBJ) $(OBJM) -o $@
 
-$(NAME2): $(BOBJ)
+$(NAME2): $(OBJ) $(OBJB)
+	@echo " ██████╗██╗  ██╗███████╗ ██████╗██╗  ██╗███████╗██████╗ "
+	@echo "██╔════╝██║  ██║██╔════╝██╔════╝██║ ██╔╝██╔════╝██╔══██╗"
+	@echo "██║     ███████║█████╗  ██║     █████╔╝ █████╗  ██████╔╝"
+	@echo "██║     ██╔══██║██╔══╝  ██║     ██╔═██╗ ██╔══╝  ██╔══██╗"
+	@echo "╚██████╗██║  ██║███████╗╚██████╗██║  ██╗███████╗██║  ██║"
+	@echo " ╚═════╝╚═╝  ╚═╝╚══════╝ ╚═════╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝"
+	@echo "                       BY: MTRX						   "
+	@$(CC) $(OBJ) $(OBJB) -o $@
 
-bonus: $(NAME2) $(OBJ)
-	$(CC) $(CFLAGS) $(OBJ) $(BOBJ) -o $<
+$(OBJD)/%.o: $(SRCD)/%.c
+	@mkdir -p $(OBJD)
+	@printf "Compiling $<\r"
+	@$(CC) -c $(CFLAGS) $(HEADER) $< -o $@
 
-%.o: %.c $(HEADER)
-	$(CC) -c $(CFLAGS) $<
+bonus: $(NAME2)
 
 clean:
-	rm -rf $(OBJ) $(BOBJ)
+	rm -rf $(OBJD)
 
 fclean: clean
 	rm -rf $(NAME1) $(NAME2)
 
 re: fclean all
+                                               
