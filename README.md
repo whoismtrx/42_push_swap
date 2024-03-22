@@ -51,7 +51,7 @@ OK
 - You should take arguments as a list of integers and nothing else.
 - The program should not crash, even in case of error.
 - You need to sort 3 numbers in less than 3 operations, 5 numbers in less than 12 operations and 100 numbers in less than 700 operations and 500 numbers in less than 5500 operations in case if you want to get 100/100.
-- The project is composed of 2 stacks named `a` and `b` and you can't use any other stack while sorting.
+- The project is composed of 2 stacks named `A` and `B` and you can't use any other stack while sorting.
 - The sorting algorithm should be implemented with the instructions below:
   - `sa`: swap a - swap the first 2 elements at the top of stack a. Do nothing if there is only one or no elements.
   - `sb`: swap b - swap the first 2 elements at the top of stack b. Do nothing if there is only one or no elements.
@@ -84,12 +84,60 @@ After we have all the elements indexed, we need to divide the stack into chunks.
 ### Fourth Step
 
 As we seen in the previous step, we have a chunk of size `sizeof(stack A)/3`, we can notice that the size of stack `A` it's gonna change after we push the elements to the stack `B`, so we need to store this value in a variable let's call it `Pivot_One`, also because we need our algorithm to be more optimized, we need another variable we can name it `Pivot_Two` to store the half size of `Pivot_One`, so for know we have:
-- `Pivot_One = sizeof(stack A)/3`
-- `Pivot_Two = Pivot_One/2`
+```
+  Pivot_One = sizeof(stack A)/3
+  Pivot_Two = Pivot_One/2
+```
 
 I know you are asking yourself why we need `Pivot_Two`? where going to figuer it out in the next steps.
 
 ### Fifth Step
 
 Now we decided the `chunk` we gonna care about, we have `Pivot_one` and `Pivot_Two` what nexts? we need set some conditions to know when we need to push an element to the stack `B` or rotate the stack `A`, we need another condition to know when we need to rotate the stack `B` after we push an element to it or not. Also because we have a `Doubly Circular Linked List` we need a condition to break the `loop` or we are going to have an infinite loop, we need a `Counter` to keep counting the number of elements we pushed to stack `B` to reinisialize the `Pivot_One` and `Pivot_Two` after we finish the first chunk. so let's set the conditions:
-- while
+```
+while sizeof(stack A) > 5
+  if top B index is <= Pivot_Two && size of stack B > 1
+    rotate the stack B
+  if top A index is <= Pivot_One
+    push the element to stack B
+    increment the Counter
+  else
+    rotate the stack A
+  if Counter >= Pivot_One
+    reinisialize the Pivot_One and Pivot_Two
+    reinisialize the Counter
+```
+
+keep in mind that we have a bunch of ways to implement those conditions, so you can implement them as you want. the most important thing is to know how to implement them on the right way to get the best results. after we finish this step, the `counter` will be equal to `Pivot_One`. so we know that we pushed all the elements from the first chunk to the stack `B`. to avoid the infinite loop, we need reinitialize the `Pivot_One` and `Pivot_Two` to get the next chunk. we can back to the `Step 3` and repeat the process until we push all the elements to the stack `B` exept the lagest 5 elements.
+
+### Sixth Step
+
+Now we have all the elements pushed to the stack `B` exept the largest 5 elements, we can call the `Basic algorithm` to sort the stack `A`. After that, were going to the next step.
+
+### Seventh Step
+
+The Seventh step is the last one, we need to get back all the elements from the stack `B` to the stack `A` in the right order. we can do this by pushing the elements from the stack `B` to the stack `A` while we are checking the index of the elements, we gonna push the elements to the right position so basically the element with the `top A index - 1` but if we keep looking for it in the stack with `rotating` the number of operations will be so high, so to optimize this step we can push the elements to stack `A` even if not in the right position and we can keep it in the bottom of the stack `A` till we find the right position for it. also we need a variable to store the `index` of the element we keep in the bottom. so let's set the conditions:
+```
+while sizeof(stack B) > 0
+  lastIndex = 0
+  if bottom A index < top A index
+    lastIndex = bottom A index
+  if find top A index - 1 in B < sizeof(stack B)
+    while top B index != top A index - 1
+      if top B index > lastIndex
+        push top B to A
+        rotate the stack A
+      else
+        rotate the stack B
+    push top B to A
+  else
+    while top B index != top A index - 1
+      reverse rotate the stack B
+    push top B to A
+  while lastIndex == top A index - 1
+    reverse rotate the stack A
+    lastIndex = bottom A index
+```
+
+After we finish this step, we gonna have all the elements sorted in the stack `A` and we can print the instructions to the standard output.
+
