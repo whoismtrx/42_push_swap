@@ -1,14 +1,16 @@
 # Push_swap
 
+![](https://github.com/whoismtrx/42_push_swap/blob/main/gifs/push_swap.gif)
+
 ## Overview
 
 This project is about sorting data. You have at your disposal a set of int values, 2 stacks and a set of instructions to manipulate both stacks. The final goal is to sort the data in ascending order with the lowest possible number of instructions.
 
 ## Key Features
 
-The project is composed of two programs so thats means contains 2 parts: `Mandatory` and `Bonus`.
-- `push_swap` is the `Mandatory` part which we need to calculates and displays on the standard output the smallest list of instructions possible to sort the integer arguments received.
-- `checker` is the `Bonus` part which we need to takes integer arguments and reads instructions on the standard output. Once read, checker executes them and displays OK if integers are sorted. Otherwise, it will display KO.
+The project is composed of two programs `push_swap` in `Mandatory` part and `checker` in `Bonus` part.
+- `push_swap` which we need to calculates and displays on the standard output the smallest list of instructions possible to sort the integer arguments received.
+- `checker` it's a program that takes integer arguments and reads instructions on the standard output. Once read, checker executes them and displays OK if integers are sorted. Otherwise, it will display KO or Error if the integers are not sorted or the instructions are not well formatted.
 
 ## Getting Started
 
@@ -67,7 +69,7 @@ OK
 
 ## Implementation
 
-I think the first thing we need to care about is the `data structure` we gonna use. since `stack` doesn't implemented in the C standard library, we need to implement it by ourselves. we can use `Arrays` to implement it. we can also use `Linked Lists` but the best way to implement it specially for this project is to use `Doubly Circular Linked Lists`. because we can easily implement all operations with O(1) time complexity. The next thing we need to do, is to implement the `instructions` we gonna use to manipulate the stack. I'm not gonna dive deep into the implementation of the stack and the instructions because it's a basic thing and you can find a lot of resources on the internet to implement it so I'm considering that you already implemented it. After all, we can start to implement the sorting algorithm.
+I think the first thing we need to care about is the `data structure` we gonna use. since `stack` doesn't implemented in the C standard library, we need to implement it by ourselves. we can use `Arrays` to implement it. we can also use `Linked Lists` but the best way to implement it specially for this project is to use `Circular Doubly Linked Lists`. because we can easily implement all operations with O(1) time complexity. The next thing we need to do, is to implement the `instructions` we gonna use to manipulate the stack. I'm not gonna dive deep into the implementation of the stack and the instructions because it's a basic thing and you can find a lot of resources on the internet to implement it so I'm considering that you already implemented it. After all, we can start to implement the sorting algorithm.
 
 ### First Step
 
@@ -75,11 +77,32 @@ The first thing we need to do is to find the best `algorithm` to sort the stack 
 
 ### Second Step
 
-You need to `index` all the elements in the stack from the smallest to the largest. `0 to n-1` or `1 to n` this doesn't matter. what important here is to know every element's `position` in the stack and the `chunk` where it belongs, and that's why we need to index them. for less complexity, you can do this step while pushing the elements to the stack. let's say we gonna use `0 indexing`. the first element pushed to the stack will be indexed as 0, the second element will be also indexed as 0 but when we gonna traverse the stack to push the second element, we gonna check the value of the second element with the first element, if the second element is less than the first element, in this case we need to increment the index of the first element and the second element will still be indexed as 0. if the second element is greater than the first element, in this case we need to increment the index of the second element and keep the index of the first element as it is. and so on with all the elements. after this step, we gonna have all the elements indexed from 0 to n-1.
+To arrange the elements in the stack from smallest to largest, we need to assign each element a specific position. This process, known as `indexing`, helps us understand the order of the elements within the stack and the corresponding `chunk` they belong to. We can simplify the indexing step by incorporating it while adding elements to the stack.
+Let's assume we start with a `0-based indexing` system. When we push the first element onto the stack, we assign it an index of 0. As we proceed to push the second element, we compare its value with the first element. If the second element is smaller, we increase the index of the first element, while the second element retains an index of 0. On the other hand, if the second element is larger, we only increment its index, leaving the index of the first element unchanged. This process continues for all elements, ensuring that each one is assigned an index ranging from 0 to n-1. This indexed order helps maintain consistency and clarity within the stack.
+
+```
+  if node->value > head->value
+    node->index++
+  else
+    head->index++
+  current = head->next
+  while current->next != head
+    if node->value > current->value
+      node->index++
+    else
+      current->index++
+    current = current->next
+```
 
 ### Third Step
 
 After we have all the elements indexed, we need to divide the stack into chunks. the best way to do this is to divide the stack into 3 chunks, and the first chunk it's the only one we gonna care about. So the first chunk will contain the first 1/3 of the elements, that means all the elements from `0 to (sizeof(stack A)/3)-1`. and all those elements will be push to the secend stack `B`.
+
+```
+The elements with blue color it's our chunk.
+```
+![](https://github.com/whoismtrx/42_push_swap/blob/main/gifs/step3.gif)
+
 
 ### Fourth Step
 
@@ -88,12 +111,11 @@ As we seen in the previous step, we have a chunk of size `sizeof(stack A)/3`, we
   Pivot_One = sizeof(stack A)/3
   Pivot_Two = Pivot_One/2
 ```
-
 I know you are asking yourself why we need `Pivot_Two`? where going to figuer it out in the next steps.
 
 ### Fifth Step
 
-Now we decided the `chunk` we gonna care about, we have `Pivot_one` and `Pivot_Two` what nexts? we need set some conditions to know when we need to push an element to the stack `B` or rotate the stack `A`, we need another condition to know when we need to rotate the stack `B` after we push an element to it or not. Also because we have a `Doubly Circular Linked List` we need a condition to break the `loop` or we are going to have an infinite loop, we need a `Counter` to keep counting the number of elements we pushed to stack `B` to reinisialize the `Pivot_One` and `Pivot_Two` after we finish the first chunk. so let's set the conditions:
+Now we decided the `chunk` we gonna care about, we have `Pivot_one` and `Pivot_Two` what nexts? we need set some conditions to know when we need to push an element to the stack `B` or rotate the stack `A`, we need another condition to know when we need to rotate the stack `B` after we push an element to it or not. Also because we have a `Circular Doubly Linked List` we need a condition to break the `loop` or we are going to have an infinite loop, we need a `Counter` to keep counting the number of elements we pushed to stack `B` to reinisialize the `Pivot_One` and `Pivot_Two` after we finish the first chunk. so let's set the conditions:
 ```
 while sizeof(stack A) > 5
   if top B index is <= Pivot_Two && size of stack B > 1
@@ -108,7 +130,17 @@ while sizeof(stack A) > 5
     reinisialize the Counter
 ```
 
+```
+Our chunk after we push the elements to the stack B.
+```
+![](https://github.com/whoismtrx/42_push_swap/blob/main/gifs/step5_1.gif)
+
 keep in mind that we have a bunch of ways to implement those conditions, so you can implement them as you want. the most important thing is to know how to implement them on the right way to get the best results. after we finish this step, the `counter` will be equal to `Pivot_One`. so we know that we pushed all the elements from the first chunk to the stack `B`. to avoid the infinite loop, we need reinitialize the `Pivot_One` and `Pivot_Two` to get the next chunk. we can back to the `Step 3` and repeat the process until we push all the elements to the stack `B` exept the lagest 5 elements.
+
+```
+Stack A after we push the elements to the stack B.
+```
+![](https://github.com/whoismtrx/42_push_swap/blob/main/gifs/step5_2.gif)
 
 ### Sixth Step
 
@@ -116,7 +148,7 @@ Now we have all the elements pushed to the stack `B` exept the largest 5 element
 
 ### Seventh Step
 
-The Seventh step is the last one, we need to get back all the elements from the stack `B` to the stack `A` in the right order. we can do this by pushing the elements from the stack `B` to the stack `A` while we are checking the index of the elements, we gonna push the elements to the right position so basically the element with the `top A index - 1` but if we keep looking for it in the stack with `rotating` the number of operations will be so high, so to optimize this step we can push the elements to stack `A` even if not in the right position and we can keep it in the bottom of the stack `A` till we find the right position for it. also we need a variable to store the `index` of the element we keep in the bottom. so let's set the conditions:
+The Seventh step is the last one, we need to get back all the elements from the stack `B` to the stack `A` in the right order. we can do this by pushing the elements from the stack `B` to the stack `A` while we are checking the index of the elements, we gonna push the elements to the right position so basically the element with the `top A index - 1` but if we keep looking for it in the stack with `rotating`, the number of operations will be so high, so to optimize this step we can push the elements to stack `A` even if not in the right position and we can keep them in the bottom of the stack `A` till we find the right position for them. also we need a variable to store the `index` of the element we keep in the bottom. so let's set the conditions:
 ```
 while sizeof(stack B) > 0
   lastIndex = 0
@@ -139,5 +171,38 @@ while sizeof(stack B) > 0
     lastIndex = bottom A index
 ```
 
+```
+this is how we get back the elements from the stack B to the stack A in the right position.
+```
+
+![](https://github.com/whoismtrx/42_push_swap/blob/main/gifs/step7.gif)
+
 After we finish this step, we gonna have all the elements sorted in the stack `A` and we can print the instructions to the standard output.
+
+### Clarifications
+
+- firstly, don't look at my code as a solution, it's implemented 2 years ago and I'm sure it's not the best solution. I'm just trying to give you an idea about how you can implement the project in the right way.
+- secondly, in the previous steps, I try to write some psoeudo code to help you understand the idea, there's a lot of way to implement the conditions and the instructions, so you can implement them as you want.
+- thirdly, let's discuss the importance of the `Pivot_two` and the decision it makes about `rotating` the stack B. But why is this necessary? Let's consider what would happen if we didn't include it in our algorithm.
+If we implemented our algorithm without considering the `Pivot_two` decision, we would simply push all the elements from the first chunk onto stack `B` without performing any `rotations`. However, when we eventually need to transfer these elements back from stack `B` to stack `A`, we would encounter a problem. Since we didn't `rotate` stack `B` during the process, the elements would not be in the desired order.
+As a result, we would need to perform multiple rotations to rearrange the elements correctly. This is because some elements on stack `B` would have `indexes` lower than the ones we want to push onto stack `A`. These `extra rotations` would significantly `increase the number of operations required`, making the `algorithm less efficient`.
+
+  ```
+  this is how our algorithm gonna work without Pivot_Two.
+  ```
+
+  ![](https://github.com/whoismtrx/42_push_swap/blob/main/gifs/notaStep.gif)
+  
+  So to avoid this issue, we introduce the `Pivot_two` decision to determine when and how to rotate stack `B`, ensuring that the elements are in the desired order before transferring them back to stack `A`.
+
+- least but not last, i have a big thanks to my friend `@Nx21` for helping me to improve and optimize the algorithm. i wanna thank you for reading this article, I hope it helps you to understand the project and how you can implement it in the right way. if you have any question or you need help, feel free to ask me on my email `orekab3@gmail.com`, and I will be happy to help you. also if you have any suggestion to improve the article or optimize the algorithm, please let me know.
+
+## Resources
+
+- [Understanding the Stack Data Structure](https://medium.com/@noransaber685/understanding-the-stack-data-structure-in-c-introduction-implementation-and-examples-8d3fb03de809)
+- [Circular Doubly Linked Lists](https://www.youtube.com/watch?v=1kjIu__pWTw)
+- [Push_Swap Visualizer](https://github.com/anolivei/Push_swap42)
+- [Push_Swap Tester](https://github.com/LeoFu9487/push_swap_tester)
+
+
 
