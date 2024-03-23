@@ -98,9 +98,7 @@ Let's assume we start with a `0-based indexing` system. When we push the first e
 
 After we have all the elements indexed, we need to divide the stack into chunks. the best way to do this is to divide the stack into 3 chunks, and the first chunk it's the only one we gonna care about. So the first chunk will contain the first 1/3 of the elements, that means all the elements from `0 to (sizeof(stack A)/3)-1`. and all those elements will be push to the secend stack `B`.
 
-```
-The elements with blue color it's our chunk.
-```
+`The elements with blue color it's our chunk.`
 ![](https://github.com/whoismtrx/42_push_swap/blob/main/gifs/step3.gif)
 
 
@@ -130,16 +128,12 @@ while sizeof(stack A) > 5
     reinisialize the Counter
 ```
 
-```
-Our chunk after we push the elements to the stack B.
-```
+`Our chunk after we push the elements to the stack B.`
 ![](https://github.com/whoismtrx/42_push_swap/blob/main/gifs/step5_1.gif)
 
 keep in mind that we have a bunch of ways to implement those conditions, so you can implement them as you want. the most important thing is to know how to implement them on the right way to get the best results. after we finish this step, the `counter` will be equal to `Pivot_One`. so we know that we pushed all the elements from the first chunk to the stack `B`. to avoid the infinite loop, we need reinitialize the `Pivot_One` and `Pivot_Two` to get the next chunk. we can back to the `Step 3` and repeat the process until we push all the elements to the stack `B` exept the lagest 5 elements.
 
-```
-Stack A after we push the elements to the stack B.
-```
+`Stack A after we push the elements to the stack B.`
 ![](https://github.com/whoismtrx/42_push_swap/blob/main/gifs/step5_2.gif)
 
 ### Sixth Step
@@ -171,9 +165,8 @@ while sizeof(stack B) > 0
     lastIndex = bottom A index
 ```
 
-```
-this is how we get back the elements from the stack B to the stack A in the right position.
-```
+`this is how we get back the elements from the stack B to the stack A in the right position.
+`
 
 ![](https://github.com/whoismtrx/42_push_swap/blob/main/gifs/step7.gif)
 
@@ -187,15 +180,13 @@ After we finish this step, we gonna have all the elements sorted in the stack `A
 If we implemented our algorithm without considering the `Pivot_two` decision, we would simply push all the elements from the first chunk onto stack `B` without performing any `rotations`. However, when we eventually need to transfer these elements back from stack `B` to stack `A`, we would encounter a problem. Since we didn't `rotate` stack `B` during the process, the elements would not be in the desired order.
 As a result, we would need to perform multiple rotations to rearrange the elements correctly. This is because some elements on stack `B` would have `indexes` lower than the ones we want to push onto stack `A`. These `extra rotations` would significantly `increase the number of operations required`, making the `algorithm less efficient`.
 
-  ```
-  this is how our algorithm gonna work without Pivot_Two.
-  ```
+  `this is how our algorithm gonna work without Pivot_Two.`
 
   ![](https://github.com/whoismtrx/42_push_swap/blob/main/gifs/notaStep.gif)
   
   So to avoid this issue, we introduce the `Pivot_two` decision to determine when and how to rotate stack `B`, ensuring that the elements are in the desired order before transferring them back to stack `A`.
 
-- least but not last, i have a big thanks to my friend `@Nx21` for helping me to improve and optimize the algorithm. i wanna thank you for reading this article, I hope it helps you to understand the project and how you can implement it in the right way. if you have any question or you need help, feel free to ask me on my email `orekab3@gmail.com`, and I will be happy to help you. also if you have any suggestion to improve the article or optimize the algorithm, please let me know.
+- least but not last, i have a big thanks to my friend [Nx21](https://github.com/Nx21) for helping me to improve and optimize the algorithm. i wanna thank you for reading this article, I hope it helps you to understand the project and how you can implement it in the right way. if you have any question or you need help, feel free to ask me on my email `orekab3@gmail.com`, and I will be happy to help you. also if you have any suggestion to improve the article or optimize the algorithm, please let me know.
 
 ## Resources
 
