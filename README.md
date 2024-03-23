@@ -10,7 +10,7 @@ This project is about sorting data. You have at your disposal a set of int value
 
 The project is composed of two programs `push_swap` in `Mandatory` part and `checker` in `Bonus` part.
 - `push_swap` which we need to calculates and displays on the standard output the smallest list of instructions possible to sort the integer arguments received.
-- `checker` it's a program that takes integer arguments and reads instructions on the standard output. Once read, checker executes them and displays OK if integers are sorted. Otherwise, it will display KO or Error if the integers are not sorted or the instructions are not well formatted.
+- `checker` it's a program that takes integer arguments and reads instructions from the standard input. Once read, checker executes them and displays OK if integers are sorted. Otherwise, it will display KO or Error if the integers are not sorted or the instructions are not well formatted.
 
 ## Getting Started
 
@@ -69,7 +69,7 @@ OK
 
 ## Implementation
 
-I think the first thing we need to care about is the `data structure` we gonna use. since `stack` doesn't implemented in the C standard library, we need to implement it by ourselves. we can use `Arrays` to implement it. we can also use `Linked Lists` but the best way to implement it specially for this project is to use `Circular Doubly Linked Lists`. because we can easily implement all operations with O(1) time complexity. The next thing we need to do, is to implement the `instructions` we gonna use to manipulate the stack. I'm not gonna dive deep into the implementation of the stack and the instructions because it's a basic thing and you can find a lot of resources on the internet to implement it so I'm considering that you already implemented it. After all, we can start to implement the sorting algorithm.
+I think the first thing we need to care about is the `data structure` we gonna use. since `stack` doesn't implemented in the C standard library, we need to implement it by ourselves. we can use `Arrays` to implement it. we can also use `Linked Lists` but the best way to implement it specially for this project is to use `Circular Doubly Linked Lists`, because we can easily implement all operations with O(1) time complexity. The next thing we need to do, is to implement the `instructions` we gonna use to manipulate the stack. I'm not gonna dive deep into the implementation of the stack and the instructions because it's a basic thing and you can find a lot of resources on the internet to implement it so I'm considering that you already implemented it. After all, we can start to implement the sorting algorithm.
 
 ### First Step
 
@@ -109,14 +109,14 @@ As we seen in the previous step, we have a chunk of size `sizeof(stack A)/3`, we
   Pivot_One = sizeof(stack A)/3
   Pivot_Two = Pivot_One/2
 ```
-I know you are asking yourself why we need `Pivot_Two`? where going to figuer it out in the next steps.
+I know you are asking yourself why we need `Pivot_Two`? where going to figure it out in the next steps.
 
 ### Fifth Step
 
-Now we decided the `chunk` we gonna care about, we have `Pivot_one` and `Pivot_Two` what nexts? we need set some conditions to know when we need to push an element to the stack `B` or rotate the stack `A`, we need another condition to know when we need to rotate the stack `B` after we push an element to it or not. Also because we have a `Circular Doubly Linked List` we need a condition to break the `loop` or we are going to have an infinite loop, we need a `Counter` to keep counting the number of elements we pushed to stack `B` to reinisialize the `Pivot_One` and `Pivot_Two` after we finish the first chunk. so let's set the conditions:
+Now we decided the `chunk` we gonna care about, we have `Pivot_one` and `Pivot_Two` what's next? we need to set some conditions to know when we need to push an element to the stack `B` or rotate the stack `A`, we need another condition to know when we need to rotate the stack `B` after we push an element to it or not. Also because we have a `Circular Doubly Linked List` we need to have a condition to break the `loop` or we are going to have an infinite loop, we need a `Counter` to keep counting the number of elements we pushed to stack `B` to reinitialize the `Pivot_One` and `Pivot_Two` after we finish the first chunk. so let's set the conditions:
 ```
 while sizeof(stack A) > 5
-  if top B index is <= Pivot_Two && size of stack B > 1
+  if top B index is <= Pivot_Two && sizeof(stack B) > 1
     rotate the stack B
   if top A index is <= Pivot_One
     push the element to stack B
@@ -128,10 +128,10 @@ while sizeof(stack A) > 5
     reinisialize the Counter
 ```
 
-`Our chunk after we push the elements to the stack B.`
+`After we push the chunk elements to the stack B.`
 ![](https://github.com/whoismtrx/42_push_swap/blob/main/gifs/step5_1.gif)
 
-keep in mind that we have a bunch of ways to implement those conditions, so you can implement them as you want. the most important thing is to know how to implement them on the right way to get the best results. after we finish this step, the `counter` will be equal to `Pivot_One`. so we know that we pushed all the elements from the first chunk to the stack `B`. to avoid the infinite loop, we need reinitialize the `Pivot_One` and `Pivot_Two` to get the next chunk. we can back to the `Step 3` and repeat the process until we push all the elements to the stack `B` exept the lagest 5 elements.
+keep in mind that we have a bunch of ways to implement those conditions, so you can implement them as you want. the most important thing is to know how to implement them on the right way to get the best results. after we finish this step, the `counter` will be equal to `Pivot_One`. so we know that we pushed all the elements from the first chunk to the stack `B`. to avoid the infinite loop, we need reinitialize the `Pivot_One` and `Pivot_Two` to get the next chunk. we can back to the `Step 3` and repeat the process until we push all the elements to the stack `B` except the largest and the last 5 elements.
 
 `Stack A after we push the elements to the stack B.`
 ![](https://github.com/whoismtrx/42_push_swap/blob/main/gifs/step5_2.gif)
@@ -148,9 +148,10 @@ while sizeof(stack B) > 0
   lastIndex = 0
   if bottom A index < top A index
     lastIndex = bottom A index
-  if find top A index - 1 in B < sizeof(stack B)
+  if find(top A index - 1 in B) < sizeof(stack B) / 2
     while top B index != top A index - 1
       if top B index > lastIndex
+        lastIndex = top B index
         push top B to A
         rotate the stack A
       else
@@ -162,11 +163,9 @@ while sizeof(stack B) > 0
     push top B to A
   while lastIndex == top A index - 1
     reverse rotate the stack A
-    lastIndex = bottom A index
 ```
 
-`this is how we get back the elements from the stack B to the stack A in the right position.
-`
+`this is how we get back the elements from the stack B to the stack A in the right position.`
 
 ![](https://github.com/whoismtrx/42_push_swap/blob/main/gifs/step7.gif)
 
@@ -175,7 +174,7 @@ After we finish this step, we gonna have all the elements sorted in the stack `A
 ### Clarifications
 
 - firstly, don't look at my code as a solution, it's implemented 2 years ago and I'm sure it's not the best solution. I'm just trying to give you an idea about how you can implement the project in the right way.
-- secondly, in the previous steps, I try to write some psoeudo code to help you understand the idea, there's a lot of way to implement the conditions and the instructions, so you can implement them as you want.
+- secondly, in the previous steps, I try to write some pseudo code to help you understand the idea, there's a lot of ways to implement the conditions and the instructions, so you can implement them as you want.
 - thirdly, let's discuss the importance of the `Pivot_two` and the decision it makes about `rotating` the stack B. But why is this necessary? Let's consider what would happen if we didn't include it in our algorithm.
 If we implemented our algorithm without considering the `Pivot_two` decision, we would simply push all the elements from the first chunk onto stack `B` without performing any `rotations`. However, when we eventually need to transfer these elements back from stack `B` to stack `A`, we would encounter a problem. Since we didn't `rotate` stack `B` during the process, the elements would not be in the desired order.
 As a result, we would need to perform multiple rotations to rearrange the elements correctly. This is because some elements on stack `B` would have `indexes` lower than the ones we want to push onto stack `A`. These `extra rotations` would significantly `increase the number of operations required`, making the `algorithm less efficient`.
@@ -186,7 +185,7 @@ As a result, we would need to perform multiple rotations to rearrange the elemen
   
   So to avoid this issue, we introduce the `Pivot_two` decision to determine when and how to rotate stack `B`, ensuring that the elements are in the desired order before transferring them back to stack `A`.
 
-- least but not last, i have a big thanks to my friend [Nx21](https://github.com/Nx21) for helping me to improve and optimize the algorithm. i wanna thank you for reading this article, I hope it helps you to understand the project and how you can implement it in the right way. if you have any question or you need help, feel free to ask me on my email `orekab3@gmail.com`, and I will be happy to help you. also if you have any suggestion to improve the article or optimize the algorithm, please let me know.
+- last but not least, i have a big thanks to my friend [Nx21](https://github.com/Nx21) for helping me to improve and optimize the algorithm. i wanna thank you for reading this article, I hope it helps you to understand the project and how you can implement it in the right way. if you have any question or you need help, feel free to ask me on my email `orekab3@gmail.com`, and I will be happy to help you. also if you have any suggestion to improve the article or optimize the algorithm, please let me know.
 
 ## Resources
 
